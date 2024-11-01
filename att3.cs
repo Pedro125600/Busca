@@ -1,17 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace att2
+namespace att3
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-            int[] vetor = new int[10];
+            int[] vetor = new int[100];
             Random r = new Random();
 
 
@@ -21,10 +20,10 @@ namespace att2
 
             }
 
-            Console.WriteLine("De um valor de 0  a 10 para procurar:");
+            Console.WriteLine("De um valor de 0  a 100 para procurar e contar quntas vezes ele aparece:");
             int busc = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"O valor esta no indice {Pesquisa(vetor, busc)}");
+            Console.WriteLine($"O valor aparece: {Busca(vetor, busc)}");
 
 
             for (int i = 0; i < vetor.Length; i++)
@@ -37,33 +36,23 @@ namespace att2
 
         }
 
-
-        static int Pesquisa(int[] array, int x) 
+        static int Busca(int[] array, int x)
         {
-            int resp = -1;
-          
-            int dir = array.Length - 1, esq = 0, meio;
-            while (esq <= dir)
+            int cont = 0;
+
+            for (int i = 0; i < array.Length; i++)
             {
-                meio = (esq + dir) / 2;
-                if (x == array[meio])
+                if (array[i] == x)
                 {
-                    resp = meio;
-                    esq = array.Length - 1;
+                    cont++;
+                    
                 }
-                else if (x > array[meio])
-                {
-                    esq = meio + 1;
-                }
-                else
-                {
-                    dir = meio - 1;
-                }
+
             }
 
-            return resp;
+            return cont;
         }
+
+
     }
-
-
 }
